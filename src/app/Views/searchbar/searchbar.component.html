@@ -1,0 +1,18 @@
+<div id="searchbar">
+	<form (submit)="searchArtist($event)">
+		<mat-form-field>
+			<mat-label>Artist Search</mat-label>
+			<input matInput (focus)="isSearchFocused = true" (blur)="isSearchFocused = false" [value]="searchValue" (input)="updateSearchValue($event)" placeholder="Ex. Rihanna" value="" />
+			<button matSuffix mat-icon-button aria-label="Clear" type="submit" color="accent">
+				<mat-icon>search</mat-icon>
+			</button>
+		</mat-form-field>
+	</form>
+	<div id="search-results-wrapper" [ngClass]="{ visible: isSearchFocused && searchValue }">
+		<mat-list color="accent">
+			<mat-list-item *ngFor="let artist of searchResults" (click)="selectArtist(artist)">
+				<h3 matLine (click)="searchArtist($event, artist)">{{ artist.name }}</h3>
+			</mat-list-item>
+		</mat-list>
+	</div>
+</div>

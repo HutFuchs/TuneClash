@@ -1,0 +1,35 @@
+<div id="versus">
+	<div id="versus-wrapper">
+		<div id="searchbars">
+			<div class="artist-panel">
+				<div *ngIf="Artists.left" class="pLeft">
+					<div class="artist-image">
+						<img [src]="Artists.left.Image" (error)="handleImageError(Artists.left)" alt="Artist Image" />
+					</div>
+					<div class="artist-name">{{ Artists.left.Name }}</div>
+				</div>
+				<app-searchbar (searchResult)="handleSearchResult($event, true)"></app-searchbar>
+			</div>
+			<div class="artist-panel">
+				<div *ngIf="Artists.right" class="pRight">
+					<div class="artist-image">
+						<img [src]="Artists.right.Image" (error)="handleImageError(Artists.right)" alt="Artist Image" />
+					</div>
+					<div class="artist-name">{{ Artists.right.Name }}</div>
+				</div>
+				<app-searchbar (searchResult)="handleSearchResult($event, false)"></app-searchbar>
+			</div>
+		</div>
+
+		<div *ngIf="Artists.left && Artists.right" class="vTable">
+			<div class="vrow" *ngFor="let property of properties; let i = index" [@expandCollapse]="{ value: animationState[i], params: { delay: i * 0.1 } }">
+				<div class="vline">{{ HelperService.toLocal(Artists.left[property]) }}</div>
+				<div class="vline">
+					<h3>{{ property }}</h3>
+					<div>{{ sign(Artists.left[property], Artists.right[property]) }}</div>
+				</div>
+				<div class="vline">{{ HelperService.toLocal(Artists.right[property]) }}</div>
+			</div>
+		</div>
+	</div>
+</div>

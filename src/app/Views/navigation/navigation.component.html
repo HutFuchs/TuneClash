@@ -1,0 +1,18 @@
+<header>
+	<mat-toolbar>
+		<button id="btn-single" [ngClass]="{ active: isActive('/') }" mat-button (click)="navigateTo('')">
+			<span>Single</span>
+		</button>
+		<div id="banner-wrapper">
+			<div id="banner">
+				<span class="app-name">TuneClash</span>
+				<div id="logo">
+					<img src="assets/media/logo.png" alt="TuneClash Logo" />
+				</div>
+			</div>
+		</div>
+		<button id="btn-versus" [ngClass]="{ active: isActive('/versus') }" mat-button (click)="navigateTo('versus')">
+			<span>Versus</span>
+		</button>
+	</mat-toolbar>
+</header>

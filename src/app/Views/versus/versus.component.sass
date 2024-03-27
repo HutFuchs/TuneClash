@@ -1,0 +1,65 @@
+@use '../../app.colors' as color
+#versus
+    position: relative
+    display: flex
+    flex-grow: 1
+    justify-content: center
+    background-color: color.$navi
+    border-top: 1rem solid color.$black
+    z-index: 10
+    #versus-wrapper
+        width: 80%
+        background-color: color.$dark_yellow
+    #searchbars
+        display: flex
+
+    .vTable
+        .vrow
+            display: flex
+            justify-content: space-between
+            margin: 1rem
+            color: color.$cyan
+            background-color: color.$navi
+        .vline
+            display: flex
+            flex-direction: column
+            justify-content: flex-end
+            align-items: center
+            width: 100%
+            padding: 1em
+            padding-bottom: 2em
+            font-family: 'Caveat'
+            font-size: 1.5rem
+            h3
+                margin-top: 0
+.artist-panel
+    position: relative
+    flex: 1
+    z-index: 9
+    .artist-image img
+        width: 100%
+        border-radius: 7em
+    .artist-name
+        position: absolute
+        bottom: 0
+        width: 100%
+        text-align: center
+        padding: 0.5em 0
+        font-size: 2em
+        font-family: "Lilita One"
+        color: color.$yellow
+    .pLeft
+        position: absolute
+        display: block
+        left: 30%
+        top: -13em
+        width: 200px
+        height: 200px
+
+    .pRight
+        position: absolute
+        display: block
+        right: 30%
+        top: -13em
+        width: 200px
+        height: 200px

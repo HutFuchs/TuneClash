@@ -1,0 +1,60 @@
+@use 'sass:map'
+@use '@angular/material' as mat
+@use '../../app.colors' as color
+
+$primary: mat.define-palette(mat.$grey-palette)
+
+#main-view
+    position: relative
+    display: flex
+    flex-grow: 1
+    justify-content: center
+    background-color: color.$navi
+    border-top: 1rem solid color.$dark_yellow
+
+    #main-wrapper
+        display: flex
+        flex-direction: column
+        width: 60%
+
+    #scoreboard
+        position: relative
+        display: flex
+        justify-content: center
+
+        .panel
+            display: flex
+            justify-content: center
+            flex-direction: column
+            width: 100%
+            border: 0.3rem solid color.$cyan
+            border-radius: 0.5rem
+            .panel-head
+                display: flex
+                color: white
+                justify-content: space-between
+                align-items: center
+                padding: 1em
+            h2
+                font-family: 'Lilita One'
+                font-size: 2rem
+                padding: 0 2rem
+            tr
+                background-color: color.$navi
+            tr:hover
+                cursor: pointer
+                background-color: color.$marine-light
+            th
+                font-family: 'Beabas Neue'
+                font-size: 1.2rem
+            td
+                font-family: 'caveat'
+                font-size: 1.5rem
+            .mat-column-image, .mat-column-rank
+                text-align: center
+            .mat-column-name
+                width: 18rem
+
+app-detail-view
+    display: flex
+    justify-content: center

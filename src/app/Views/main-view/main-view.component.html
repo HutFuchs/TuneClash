@@ -1,0 +1,48 @@
+<div id="main-view">
+	<div id="main-wrapper">
+		<app-searchbar (searchResult)="handleSearchResult($event)"></app-searchbar>
+		<app-detail-view *ngIf="detailedArtist" [artist]="detailedArtist"></app-detail-view>
+		<div id="scoreboard">
+			<div class="panel">
+				<div class="panel-head">
+					<h2>Top Artists</h2>
+					<mat-form-field color="accent">
+						<mat-label>Land</mat-label>
+						<mat-select [(value)]="selectetCountry" (selectionChange)="loadTopArtists($event.value)">
+							<mat-option *ngFor="let country of countries" [value]="country.code">
+								{{ country.name }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+
+				<table mat-table [dataSource]="topArtists" class="mat-elevation-z8" aria-label="Top Artists Table">
+					<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+					<tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selectArtist(row.name)"></tr>
+
+					<ng-container matColumnDef="rank">
+						<th mat-header-cell *matHeaderCellDef>Rank</th>
+						<td mat-cell *matCellDef="let artist; let i = index">{{ i + 1 }}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="name">
+						<th mat-header-cell *matHeaderCellDef>Name</th>
+						<td mat-cell *matCellDef="let artist">{{ artist.name }}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="listeners">
+						<th mat-header-cell *matHeaderCellDef>Listeners</th>
+						<td mat-cell *matCellDef="let artist">{{ helperService.toLocal(artist.listeners) }}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="image">
+						<th mat-header-cell *matHeaderCellDef>Image</th>
+						<td mat-cell *matCellDef="let artist">
+							<img [src]="artist.image[1]['#text']" (error)="handleImageError(artist)" alt="{{ artist.name }}" />
+						</td>
+					</ng-container>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

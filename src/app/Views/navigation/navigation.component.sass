@@ -1,0 +1,55 @@
+@use '../../app.colors' as color
+
+mat-toolbar 
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 5rem
+    padding: 0
+    .app-name
+        margin: 2rem
+        font-family: 'BagelFatOne'
+        font-size: 5rem
+        color: color.$yellow
+        z-index: 12
+
+#banner-wrapper
+    position: relative
+    height: 100%
+    width: inherit
+    z-index: 11
+    #banner
+        position: absolute
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        flex-direction: column
+        width: 100%
+        height: 165%
+        background-color: color.$navi
+        border-bottom-left-radius: 0.5rem
+        border-bottom-right-radius: 0.5rem
+        box-shadow: 0px 2px 20px color.$navi
+        #logo
+            position: relative
+            width: 34rem
+            margin-top: -4rem
+            img
+                height: inherit
+                width: inherit
+
+button
+    height: 100%
+    display: flex
+    padding: 0 10%
+    font-family: Permanent Marker
+    font-size: 1.5em
+    border-bottom: 8px solid color.$navi
+    border-radius: 0
+    box-shadow: 0px 2px 20px color.$navi
+    z-index: 10
+
+    &.active
+        background-color: color.$navi
+        color: color.$yellow
+        border-bottom: 8px solid color.$yellow

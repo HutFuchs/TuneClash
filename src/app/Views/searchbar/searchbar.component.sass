@@ -1,0 +1,36 @@
+
+@use 'sass:map'
+@use '@angular/material' as mat
+@use '../../app.colors' as color
+$primary: mat.define-palette(mat.$grey-palette)
+
+#searchbar
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    form
+        display: flex
+        width: 100%
+        mat-form-field
+            margin: 2em
+            width: 100%
+    #search-results-wrapper
+        width: 86%
+        transition: opacity 0.5s, visibility 0.5s
+        opacity: 0
+        visibility: hidden
+        z-index: 1        
+        mat-list
+            position: absolute
+            width: inherit
+            margin-top: -2.3em
+            padding: 0
+            background-color: color.$marine
+            mat-list-item
+                &:hover
+                    background-color: color.$marine-light
+        &.visible 
+            opacity: 1
+            visibility: visible

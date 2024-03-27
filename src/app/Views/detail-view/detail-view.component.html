@@ -1,0 +1,41 @@
+<div id="artistDetails" *ngIf="artist">
+	<div class="panel-wrapper">
+		<div id="head">
+			<img [src]="artist.image[3]['#text']" alt="{{ artist.name }}" />
+			<div class="basics">
+				<h1>{{ artist.name }}</h1>
+				<hr />
+				<p>Listeners: {{ helperService.toLocal(artist.stats.listeners) }} / Playcount: {{ helperService.toLocal(artist.stats.playcount) }}</p>
+				<div class="genres">
+					<h3>Genres</h3>
+					<ul>
+						<li *ngFor="let tag of artist.tags.tag">{{ tag.name }}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+			<mat-tab label="Summary">
+				<p>{{ artist.bio.summary }}</p>
+			</mat-tab>
+			<mat-tab label="Biographie">
+				<div>
+					<div *ngFor="let paragraph of bioParagraphs">
+						<p>{{ paragraph }}</p>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="Albums">
+				<div class="albums">
+					<div *ngFor="let album of topAlbums">
+						<div class="album">
+							<img [src]="album.image[2]['#text']" alt="{{ album.name }}" (error)="handleImageError(album)" loading="lazy" />
+							<h3>{{ album.name }}</h3>
+							<p>{{ helperService.toLocal(album.playcount) }} Playcount</p>
+						</div>
+					</div>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</div>
